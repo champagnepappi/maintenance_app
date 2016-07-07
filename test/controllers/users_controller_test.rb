@@ -20,5 +20,17 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal "You successfully signed up",flash[:success]
   end
 
+   test "should render new for invalid params" do
+     post users_url, params: {
+       user: {
+         name: " ",
+         email: "renado@gmail.com",
+         password: "pas"m
+         password_confirmation: "wor"
+       }
+     }
+     assert_template 'new'
+   end
+
 
 end
