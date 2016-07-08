@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
     else
       render 'new'
+      flash.now[:alert] = "Incorrect name and password combination"
     end
   end
 end
