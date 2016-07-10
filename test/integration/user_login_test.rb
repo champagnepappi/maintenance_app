@@ -17,16 +17,21 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty? #expect flash not to appear in homepage
   end
 
-  test "login with valid information" do
+  test "login with valid information followed by logout" do
     get login_path
     assert_template 'sessions/new'
     post login_path, session: {
       name: @user.name,
       password: 'passw'
     }
+    assert is_logged_in?
     assert_redirected_to @user
     follow_redirect! #to actually visit the target page
     assert_template 'users/show'
-    assert is_logged_in?
+    delete logout_path
+    assert_not is_logged_in?
+    assert_redirected_to root_url
+    follow_redirect!
+
   end
 end

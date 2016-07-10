@@ -25,7 +25,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
        user: {
          name: " ",
          email: "renado@gmail.com",
-         password: "pas"m
+         password: "pas",
          password_confirmation: "wor"
        }
      }
