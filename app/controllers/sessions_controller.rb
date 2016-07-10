@@ -11,4 +11,9 @@ class SessionsController < ApplicationController
       flash.now[:alert] = "Incorrect name and password combination"
     end
   end
+
+  def destroy
+    log_out
+    redirect_to root_url
+  end
 end
