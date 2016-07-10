@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       redirect_to @user
       flash[:success] = "You successfully signed up"
     else
@@ -17,6 +18,9 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+  def index
+    @users = User.all
+  end
   private
   def user_params
     params.require(:user).permit(:name, :email, :password,
