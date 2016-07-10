@@ -27,5 +27,6 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     assert_redirected_to @user
     follow_redirect! #to actually visit the target page
     assert_template 'users/show'
+    assert is_logged_in?
   end
 end
