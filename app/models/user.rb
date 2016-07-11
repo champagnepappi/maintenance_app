@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  attr_accessor :remember_token
   validates :name, presence: true, length: {maximum: 40}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email,presence: true, length: {maximum: 100},
@@ -21,7 +22,7 @@ class User < ApplicationRecord
   #remember user
   def remember
     self.remember_token = User.new_token
-    update_attributes(:remember_digest, User.digest(remember_token))
+    update_attribute(:remember_digest, User.digest(remember_token))
   end
 
   #verify that remember digest matches remember token
