@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       log_in @user
       redirect_to @user
       flash[:success] = "You successfully signed up"
+
     else
       render 'new'
     end
@@ -20,6 +21,9 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+  end
+  def edit
+    @user = User.find_by(id: params[:id])
   end
   private
   def user_params
