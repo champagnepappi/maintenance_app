@@ -14,8 +14,8 @@ test "sign up with valid params" do
         password_confirmation: "mypass"
       }
     }
-    assert_template 'users/show'
     assert_redirected_to User.last
+    follow_redirect!
   end
 end
 
