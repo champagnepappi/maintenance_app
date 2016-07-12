@@ -47,6 +47,7 @@ class UsersController < ApplicationController
       flash[:alert] = "Please Login"
       redirect_to login_url
     end
+  end
 
   
 end
