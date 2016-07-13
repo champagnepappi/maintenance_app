@@ -1,11 +1,28 @@
 santos:
-  name: Kevin Santos
-  email: santos@gmail.com
-  password_digest: <%= User.digest('password')%>
+    name: Kevin Santos
+    email: santos@gmail.com
+    password_digest: <%= User.digest('password')%>
+    admin: true
 
 austin:
     name: Dave Austin
     email: austin@gmail.com
     password_digest: <%= User.digest('password')%>
 
+sharon:
+    name: Jane Sharon
+    email: sharon@gmail.com
+    password_digest: <%= User.digest('password')%>
+
+nancy:
+    name: Nancy Jane
+    email: nancy@gmail.com
+    password_digest: <%= User.digest('password')%>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+    name: <%= "User #{n}"%>
+    email: <% "user-#{n}@gmail.com" %>
+    password_digest: <%= User.digest('password')%>
+<% end %>
 
