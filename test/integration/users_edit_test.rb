@@ -6,27 +6,31 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "unsuccessful edit" do
+    log_in_as(@user)
     get edit_user_path(@user)
     assert_template 'users/edit'
-    patch user_path(@user), user:{
+    patch user_path(@user), params: {user:{
       name: "",
       email: "aiden@g.com",
       password: "lesl",
       password_confirmation: "lit"
     }
+    }
     assert_template 'users/edit'
   end
 
   test "successful edit" do
+    log_in_as(@user)
     get edit_user_path(@user)
     assert_template 'users/edit'
     name = "Jane sharon"
     email = "shaz@g.com"
-    patch user_path(@user),user:{
+    patch user_path(@user), params: {user:{
       name: name,
       email: email,
       password: "",
       password_confirmation: ""
+    }
     }
     assert_redirected_to @user
     assert_not flash.empty?
@@ -34,5 +38,25 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_equal @user.name, name
     assert_equal @user.email, email
 
+  end
+
+  test "friendly forwarding for successful edit" do
+    get edit_user_path(@user)
+    log_in_as(@user)
+    assert_redirected_to edit_user_path(@user)
+    name = "Just Me"
+    email = "me@gmail.com"
+    patch user_path(@user), params: {user: {
+       name: name,
+       email: email,
+       password: "passw",
+       password_confirmation: "passw"
+    }
+    }
+    assert_not flash.empty?
+    assert_redirected_to @user
+    @user.reload
+    assert_equal @user.name, name
+    assert_equal @user.email, email
   end
 end
