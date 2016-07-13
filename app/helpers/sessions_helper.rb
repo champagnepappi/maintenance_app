@@ -31,6 +31,11 @@ module SessionsHelper
                                  expires: 7.days.from_now.utc}
   end
 
+  #return true if the given user is the current user
+  def current_user?(user)
+    user == current_user
+  end
+
   #forget helper- forget persistent session
   def forget(user)
     user.forget
@@ -42,5 +47,16 @@ module SessionsHelper
     forget(current_user)
     session.delete(:user_id)
     @current_user = nil
+  end
+
+  #redirect to store lcation(default)
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  #store url trying to be accessed
+  def store_location
+    session[:forwarding_url] = request.url if request.get?
   end
 end
