@@ -7,9 +7,10 @@ class UserLoginTest < ActionDispatch::IntegrationTest
   test "login with incorrect information" do
     get login_path
     assert_template 'sessions/new'
-    post login_path, session: {
+    post login_path, params: { session: {
       name: "",
       password: "ds"
+    }
     }
     assert_template 'sessions/new'
     assert_not flash.empty?

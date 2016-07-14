@@ -1,11 +1,20 @@
 <% provide(:title, "Users")%>
 <h1>All Users</h1>
 
-<ul >
-    <% @users.each do |user| %>
-        <li>
-            <%= link_to user.name, user %>
-        </li>
+<table>
+   
+        <% @users.each do |user| %>
+            <tr>
 
-    <% end %>
-</ul>
+            <td>  <%= link_to user.name, user %> </td>
+            <td>
+                <% if current_user.admin? && !current_user?(user) %>
+                    <%= link_to "delete", user, method: :delete, data: {confirm: "Are you sure???"} %>
+                <% end %>
+
+            </td>
+            </tr>
+        <% end %>
+    
+
+</table>
