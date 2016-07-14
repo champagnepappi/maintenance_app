@@ -3,7 +3,7 @@
     <h1>Forgot Password</h1>
     <div class="callout">
 
-        <%= form_for(:password_reset, url: password_reset_path) do |f| %>
+        <%= form_for(:password_reset, url: password_resets_path) do |f| %>
             <%= f.label :email%>
             <%= f.email_field :email%>
 

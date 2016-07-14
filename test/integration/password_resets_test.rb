@@ -15,7 +15,7 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
       email: @user.email
     }
     assert_not_equal @user.reset_digest, @user.reload.reset_digest
-    assert_equal 1, ActionMailer::Base,deliveries.size
+    assert_equal 1, ActionMailer::Base.deliveries.size
     assert_not flash.empty?
     assert_redirected_to root_url
     #password reset form
@@ -54,7 +54,7 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
       email: user.email,
       user: {
          password: "password",
-         password-confirmation: "password"
+         password_confirmation: "password"
       }
       assert is_logged_in?
       assert_not flash.empty?
