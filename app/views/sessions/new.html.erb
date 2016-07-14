@@ -1,13 +1,14 @@
+<% provide(:title, "Login")%>
 <div class="medium-6 columns medium-offset-3">
-    <% provide(:title, "Login")%>
+    <h1>Login Here</h1>
     <div class="callout">
-        <h1>Login Here</h1>
 
         <%= form_for(:session, url: login_path) do |f| %>
             <%= f.label :name %>
             <%= f.text_field :name %><br>
 
             <%= f.label :password %>
+            <%= link_to "(forgot password)" , new_password_reset_path %>
             <%= f.password_field :password %><br>
 
             <%= f.label :remember_me do %>
