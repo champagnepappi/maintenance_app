@@ -10,7 +10,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 test "sign up with valid params" do
   get new_user_path
   assert_template 'new'
-  assert_difference 'User.count',1 do
+  assert_difference 'User.count', 1 do
     post users_path params: {
       user: {
         name: "Kevin Santos",
