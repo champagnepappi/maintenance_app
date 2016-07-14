@@ -1,0 +1,17 @@
+<% provide(:title, "Forgot Password")%>
+<div class="medium-6 columns medium-offset-3">
+    <h1>Forgot Password</h1>
+    <div class="callout">
+
+        <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+            <%= f.label :email%>
+            <%= f.email_field :email%>
+
+            <%= f.submit "Submit" %>
+
+        <% end %>
+    </div>
+</div>
+
+
+
