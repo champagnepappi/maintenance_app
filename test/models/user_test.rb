@@ -2,7 +2,8 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: "That Guy", email: "anonymous@gmail.com")
+    @user = User.new(name: "That Guy", email: "anonymous@gmail.com",
+                    password: "passw", password_confirmation: "passw")
   end
  
   test "name presence" do
@@ -27,6 +28,14 @@ class UserTest < ActiveSupport::TestCase
 
   test "authenticated? should return false for user with nil digest" do
     assert_not @user.authenticated?(:remember, '')
+  end
+
+  test "associated requests should be destroyed" do
+    @user.save
+    @user.requests.create!(content: "Lorem ipsum")
+    assert_difference 'Request.count', -1 do
+      @user.destroy
+    end
   end
 end
 
