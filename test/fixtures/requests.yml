@@ -1,9 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  content: MyText
-  user: one
+  content: "My laptop just crashed and I really need help"
+  created_at: <%= 5.minutes.ago %>
 
 two:
-  content: MyText
-  user: two
+  content: "My screen got a problem, I need to replace it"
+  created_at: <%= 5.years.ago %>
+
+three:
+  content: "My router got a problem"
+  created_at: <%= 2.hours.ago %>
+
+most_recent:
+  content: "I need to fix my printer"
+  created_at: <%=Time.zone.now %>
+
+      
