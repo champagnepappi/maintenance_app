@@ -46,7 +46,6 @@ class PasswordResetsController < ApplicationController
     end
   end
 
-  #check expiration of reset token
   def check_expiration
     if @user.password_reset_expired?
       flash[:alert] = "Password reset has expired"

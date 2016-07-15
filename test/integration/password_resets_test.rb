@@ -11,8 +11,9 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     get new_password_reset_path
     assert_template 'password_resets/new'
     #for invalid email
-    post password_resets_path, password_reset: {
+    post password_resets_path,params: { password_reset: {
       email: @user.email
+    }
     }
     assert_not_equal @user.reset_digest, @user.reload.reset_digest
     assert_equal 1, ActionMailer::Base.deliveries.size
@@ -37,9 +38,9 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     assert_select "input[name=email][type=hidden][value=?]",user.email
     #invalid password and confirmation
     patch password_reset_path(user.reset_token),
-      email: user.emaili,
-      user: {password: "comeon",
-           password_confirmation: "another" }
+     params: { email: user.email,
+      user: {password: "comeon", password_confirmation: "another" }
+    }
     #blank password
     patch password_reset_path(user.reset_token),
       email: user.email,

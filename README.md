@@ -5,8 +5,8 @@ and escalate unusual delays
 
 ##You can contribute
 To add features
-1. Fork it
-2. work on branch('git checkout -b branch')
-3. Add your changes ( git add . )
-4. Commit your changes (git commit -m "added new feature")
+1. Fork it.
+2. work on branch('git checkout -b branch').
+3. Add your changes ( git add . ).
+4. Commit your changes (git commit -m "added new feature").
 5. Create a pull request.

@@ -41,6 +41,7 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
 
     def destroy
       User.find(params[:id]).destroy
@@ -48,7 +49,6 @@ class UsersController < ApplicationController
       redirect_to users_url
     end
 
-  end
   private
   def user_params
     params.require(:user).permit(:name, :email, :password,
