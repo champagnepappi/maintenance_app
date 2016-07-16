@@ -23,10 +23,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @requests = @user.requests
   end
 
   def index
     @users = User.all
+    # @users = User.paginate(page: params[:page])
   end
 
   def edit
