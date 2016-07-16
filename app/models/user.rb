@@ -66,6 +66,11 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+  #define feed
+  def feed
+    Request.where("user_id = ?", id) #escape id to avoid SQL injection
+  end
+
   private
   def downcase_email
     self.email = email.downcase
