@@ -1,11 +1,13 @@
 <% provide(:title, "Home") %>
-<h1>Welcome to the maintenance App</h1>
-<p>You are just in the right place</p>
 
  <% if logged_in? %>
      <%= render 'shared/profile' %>
      <%= render 'shared/request_form' %>
+     <h3>Requests Made</h3>
+     <%= render 'shared/feed' %>
  <% else %>
+<h1>Welcome to the maintenance App</h1>
+<p>You are just in the right place</p>
 <%= link_to "Sign Up here", new_user_path %><br<br>
  <% end %>
 
