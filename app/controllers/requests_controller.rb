@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
 
   def create
-    @request = current_user.microposts.build(request_params)
+    @request = current_user.requests.build(request_params)
     if @request.save
       flash[:success] = "Maintenance Request created!" 
       redirect_to root_url

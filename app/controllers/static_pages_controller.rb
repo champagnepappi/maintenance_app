@@ -1,6 +1,9 @@
 class StaticPagesController < ApplicationController
   def home
-    @request = current_user.requests.build if logged_in?
+    if logged_in?
+      @request = current_user.requests.build 
+      @feed_items = current_user.feed
+    end
   end
 
   def about
