@@ -1,2 +1,9 @@
 <% provide(:title, @user.name)%>
 <%= @user.email %>
+<% if @user.requests.any? %>
+    <h3>Requests ( <%= @user.requests.count %> )</h3>
+    <ol class="requests">
+        <%= render @requests %>
+    </ol>
+    <%= will_paginate @requests %>
+<% end %>
