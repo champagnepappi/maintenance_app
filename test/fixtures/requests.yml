@@ -3,6 +3,7 @@
 one:
   content: "My laptop just crashed and I really need help"
   created_at: <%= 5.minutes.ago %>
+  user: santos
 
 two:
   content: "My screen got a problem, I need to replace it"
@@ -11,9 +12,18 @@ two:
 three:
   content: "My router got a problem"
   created_at: <%= 2.hours.ago %>
+  user: santos
 
 most_recent:
   content: "I need to fix my printer"
   created_at: <%=Time.zone.now %>
+  user: santos
+      
+<% 30.times do |n| %>
+request_<%= n %>:
+    content: <%= Faker::Lorem.sentence(5) %>
+    created_at: <%= 20.days.ago %>
+    user: santos
+   <% end %>
 
       
