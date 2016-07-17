@@ -2,6 +2,10 @@
     <span class="user"> <%= link_to request.user.name, request.user %></span>
     <span class="content"> <%= request.content %></span>
     <span class="timestamp">
-        Posted <%= time_ago_in_words(request.created_at) %> ago
+        Posted <%= time_ago_in_words(request.created_at) %> ago.
+        <% if current_user?(request.user)%>
+            <%= link_to "delete", request, method: :delete,
+                data: {confirm: "Are you sure you want to delete this request???"}%>
+        <% end %>
     </span>
 </li>
