@@ -22,7 +22,7 @@ class RequestsController < ApplicationController
 
   private
   def request_params
-    params.require(:request).permit(:content)
+    params.require(:request).permit(:content, :picture)
   end
 
   def correct_user
