@@ -8,6 +8,7 @@ one:
 two:
   content: "My screen got a problem, I need to replace it"
   created_at: <%= 5.years.ago %>
+  user: santos
 
 three:
   content: "My router got a problem"
@@ -26,4 +27,26 @@ request_<%= n %>:
     user: santos
    <% end %>
 
+
+router:
+  content: "My router security is not good"
+  created_at: <%= 1.year.ago %>
+  user: austin
       
+
+wifi:
+  content: "My wifi aint picking "
+  created_at: <%= 2.days.ago %>
+  user: austin
+
+
+screen:
+  content: "lorem ipsum "
+  created_at: <%= 2.minutes.ago %>
+  user: sharon
+
+      
+ram:
+  content: "need to upgrade RAM "
+  created_at: <%= 3.hours.ago %>
+  user: sharon
