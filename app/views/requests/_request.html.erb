@@ -1,5 +1,5 @@
 <li id="request-<%= request.id %>">
-    <span class="user"> <%= link_to request.user.name, request.user %></span>
+    <span class="user"> <%= link_to request.user.name, request.user %></span><br>
     <span class="content">
         <%= request.content %>
         <%= image_tag request.picture.url if request.picture? %>
