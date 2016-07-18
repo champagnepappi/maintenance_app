@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @requests = @user.requests
+    @comments = @requests.comments
   end
 
   def index
