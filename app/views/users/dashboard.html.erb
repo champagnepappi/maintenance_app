@@ -1,0 +1,27 @@
+<div class="medium-12 columns" id="yahoo">
+    <div class="callout success">
+    Yahoo!!
+    </div>
+</div>
+<div class="medium-12">
+<div class="medium-6 columns">
+<h2>Users</h2>
+<p> <%= pluralize(@users.count, "user") %> </p>
+<% @users.each do |user| %>
+    <%= user.id %>
+    <%= user.email %>
+    <%= link_to "Maintainer", rolify_path(id: user.id, role: "maintainer"), remote: true %>
+    <br>
+<% end %>
+</div>
+<div class="medium-6 columns">
+<h2>Maintainers</h2>
+<%= @maintainers.count %> Maintainers
+<% @maintainers.each do |maintainer| %>
+    <%= maintainer.email %>
+    <%= link_to "demote to user",rolify_path(id: maintainer.id,role: "user"), remote: true %>
+    <br>
+    
+<% end %>
+</div>
+</div>
