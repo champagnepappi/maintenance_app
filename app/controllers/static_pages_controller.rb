@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
     if logged_in?
       @request = current_user.requests.build 
       @feed_items = current_user.feed
+      @comment = current_user.comments.build
     end
   end
 

@@ -1,14 +1,22 @@
 class CommentsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
+
+  def new
+    @comment = Comment.new
+  end
   
   def create
-    @comment = current_user.comments.build(comment_params)
+    user = User.find_by(id: params[:id])
+    # @comment = current_user.comments.build(comment_params)
+    @comment = Comment.new(comment_params)
     if @comment.save
       flash[:success] = "Comment added"
-      redirect_to root_url
+      redirect_to user
     else
-      render 'static_pages/home'
+      render 'comments/new'
+    end
   end
+
   def destroy
   end
 

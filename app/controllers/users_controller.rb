@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only:[:index,:edit,:update,:destroy]
   before_action :correct_user, only: [:edit, :update]
-  before_action :admin_user, only: :destroy
+  before_action :admin_user, only: [:destroy, :dashboard]
 
   def new
     @user = User.new
@@ -24,12 +24,30 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @requests = @user.requests
-    @comments = @requests.comments
+    @comments = @user.comments
   end
 
   def index
     @users = User.all
     # @users = User.paginate(page: params[:page])
+  end
+
+  def dashboard
+    @maintainers = User.maintainer
+    @admins = User.admin
+    @users = User.user
+  end
+
+  def rolify
+    user = User.find(params[:id])
+    roles = params[:role]
+    user.update_attribute(:role, roles)
+    respond_to do |format|
+      format.js {}
+      format.html {
+        redirect_to dashboard_path
+      }
+    end
   end
 
   def edit
