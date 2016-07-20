@@ -1,6 +1,6 @@
 <div class="medium-12 columns" id="yahoo">
     <div class="callout success">
-    Yahoo!!
+    A role was assigned
     </div>
 </div>
 <div class="medium-12">
@@ -10,13 +10,13 @@
 <% @users.each do |user| %>
     <%= user.id %>
     <%= user.email %>
-    <%= link_to "Maintainer", rolify_path(id: user.id, role: "maintainer"), remote: true %>
+    <%= link_to "Promote to Maintainer", rolify_path(id: user.id, role: "maintainer"), remote: true %>
     <br>
 <% end %>
 </div>
 <div class="medium-6 columns">
 <h2>Maintainers</h2>
-<%= @maintainers.count %> Maintainers
+<p><%=pluralize(@maintainers.count, "maintainer") %></p>
 <% @maintainers.each do |maintainer| %>
     <%= maintainer.email %>
     <%= link_to "demote to user",rolify_path(id: maintainer.id,role: "user"), remote: true %>

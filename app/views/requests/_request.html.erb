@@ -10,5 +10,8 @@
             <%= link_to "delete", request, method: :delete,
                 data: {confirm: "Are you sure you want to delete this request???"}%>
         <% end %>
-    </span>
+    </span><br>
+    <span class="comment">
+        <%= link_to "comments",new_comment_path  %>
+        </span>
 </li>
