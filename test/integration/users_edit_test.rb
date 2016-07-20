@@ -12,6 +12,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     patch user_path(@user), params: {user:{
       name: "",
       email: "aiden@g.com",
+      contact: "0712345577",
       password: "lesl",
       password_confirmation: "lit"
     }
@@ -25,6 +26,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_template 'users/edit'
     name = "Jane sharon"
     email = "shaz@g.com"
+      contact= "0712345577"
     patch user_path(@user), params: {user:{
       name: name,
       email: email,
@@ -37,6 +39,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     @user.reload #reload users info from db to confirm that they are successfully updated
     assert_equal @user.name, name
     assert_equal @user.email, email
+    assert_equal @user.contact, contact
 
   end
 
@@ -46,6 +49,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_redirected_to edit_user_path(@user)
     name = "Just Me"
     email = "me@gmail.com"
+      contact= "0712345577"
     patch user_path(@user), params: {user: {
        name: name,
        email: email,
@@ -58,5 +62,6 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     @user.reload
     assert_equal @user.name, name
     assert_equal @user.email, email
+    assert_equal @user.contact, contact
   end
 end

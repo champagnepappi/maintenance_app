@@ -20,6 +20,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       user: {
         name: "Me Again",
         email: "me@gmail.com",
+        contact: "0705263234",
         password: "passwd",
         password_confirmation: "passwd"
         
@@ -34,6 +35,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
        user: {
          name: " ",
          email: "renado@gmail.com",
+        contact: "0705263234",
          password: "pas",
          password_confirmation: "wor"
        }
@@ -50,7 +52,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
    test "should redirect update when not logged in" do
      patch user_path(@user), params: {id: @user, user: {
         name: @user.name,
-        email: @user.email
+        email: @user.email,
+        contact: @user.contact
      }
      }
      assert_not flash.empty?
@@ -61,7 +64,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
      log_in_as(@other_user)
      patch user_path(@user), params: {id: @user, user: {
         name: @user.name,
-        email: @user.email
+        email: @user.email,
+        contact: @user.contact
      }
      }
      assert flash.empty?

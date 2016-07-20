@@ -15,6 +15,7 @@ test "sign up with valid params" do
       user: {
         name: "Kevin Santos",
         email: "santos@gmail.com",
+        contact: "0713248792",
         password: "mypass",
         password_confirmation: "mypass"
       }
@@ -52,6 +53,7 @@ test "sign up with invalid params" do
       user: {
         name: " ",
         email: "kev@c.com",
+        contact: "0713248792",
         password: "pa",
         password_confirmation: "pac"
       }
