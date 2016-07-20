@@ -9,7 +9,7 @@
 <p> <%= pluralize(@users.count, "user") %> </p>
 <% @users.each do |user| %>
     <%= user.id %>
-    <%= user.email %>
+    <%= user.name %>
     <%= link_to "Promote to Maintainer", rolify_path(id: user.id, role: "maintainer"), remote: true %>
     <br>
 <% end %>
@@ -18,7 +18,7 @@
 <h2>Maintainers</h2>
 <p><%=pluralize(@maintainers.count, "maintainer") %></p>
 <% @maintainers.each do |maintainer| %>
-    <%= maintainer.email %>
+    <%= link_to maintainer.name, maintainer %> |
     <%= link_to "demote to user",rolify_path(id: maintainer.id,role: "user"), remote: true %>
     <br>
     
