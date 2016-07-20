@@ -3,7 +3,7 @@ santos:
     email: santos@gmail.com
     contact: 0752378155
     password_digest: <%= User.digest('password')%>
-    admin: true
+    role: 1
     activated: true
     activated_at: <%= Time.zone.now %>
 

@@ -30,6 +30,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     patch user_path(@user), params: {user:{
       name: name,
       email: email,
+      contact: contact,
       password: "",
       password_confirmation: ""
     }
@@ -53,6 +54,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     patch user_path(@user), params: {user: {
        name: name,
        email: email,
+       contact: contact,
        password: "passw",
        password_confirmation: "passw"
     }
