@@ -2,18 +2,20 @@ class CommentsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
 
   def new
-    @comment = Comment.new
+
+  end
+  def show
+    @request = Request.find_by(id: params[:id])
+    @comments = @request.comments
   end
   
   def create
-    user = User.find_by(id: params[:id])
-    # @comment = current_user.comments.build(comment_params)
     @comment = Comment.new(comment_params)
     if @comment.save
       flash[:success] = "Comment added"
-      redirect_to user
+      redirect_to Request.find(@comment.request_id)
     else
-      render 'comments/new'
+      render 'new'
     end
   end
 
@@ -22,6 +24,6 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :user_id, :request_id)
   end
 end

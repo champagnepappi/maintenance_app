@@ -12,6 +12,9 @@ class RequestsController < ApplicationController
       render 'static_pages/home'
     end
   end
+  def show
+    @request = Request.find(params[:id])
+  end
 
   def destroy
     @request.destroy
