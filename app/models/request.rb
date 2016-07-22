@@ -1,7 +1,7 @@
 class Request < ApplicationRecord
   belongs_to :user
-  has_many :users
   has_many :comments, dependent: :destroy
+  enum status: {approved: 0, rejected: 1,}
   #set order in which elements are retrieved from db
   default_scope -> {order(created_at: :desc)}
   mount_uploader :picture, PictureUploader
