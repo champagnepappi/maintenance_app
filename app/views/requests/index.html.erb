@@ -1,10 +1,9 @@
 <% provide(:title, "Requests")%>
-
 <div class="medium-12">
     <div class="medium-6 columns">
         <table>
             <h2> Requests made</h2>
-            <p> <%= pluralize(@requests.count, "requests") %></p>
+            <p> <%= pluralize(@requests.count, "request") %></p>
             <tr>
                 <th>Id</th>
                 <th>Request</th>
@@ -13,24 +12,29 @@
                 <tr>
                     <td> <%= request.id %></td>
                     <td> <%= request.content %> 
-                    <td> <%= link_to "Approve", request_path(id: request.id , status: "approved") %>
+                    <td> <%= link_to "Approve", accept_path(id: request.id , status: "approved"),class: "button" %>
             </tr>
 
             <br>
         <% end %>
-        <table>
+        </table>
     </div>
     <div class="medium-6 columns">
         <table>
             <h2>Approved requests</h2>
-            <p> <%= @approved.each do |approved| %>
+            <p> <%= pluralize(@approved.count, "request") %></p>
+            <tr>
+                <th>Id</th>
+                <th>Request</th>
+            </tr>
+            <p> <% @approved.each do |approved| %>
             <tr>
                 <td> <%= approved.id %></td>
                 <td> <%= approved.content %></td>
-                <td> <%= link_to "Reject", request_path(id: request.id , status: "rejected") %>
-        </tr>
-        <br>
-    <% end %>
+                <td> <%= link_to "Reject", accept_path(id: approved.id , status: "rejected"),class: "button" %></td>
+            </tr>
+            <br>
+        <% end %>
         </table>
     </div>
 </div>
