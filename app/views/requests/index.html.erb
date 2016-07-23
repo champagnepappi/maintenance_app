@@ -8,16 +8,29 @@
             <tr>
                 <th>Id</th>
                 <th>Request</th>
-                </tr>
-                <% @requests.each do |request| %>
-                    <tr>
-                        <td> <%= request.id %></td>
-                        <td> <%= request.content %> 
-                        <td> <%= link_to "Approve" %>
-                        </tr>
-            
-                        <br>
-                        <% end %>
-                        <table>
-        </div>
+            </tr>
+            <% @requests.each do |request| %>
+                <tr>
+                    <td> <%= request.id %></td>
+                    <td> <%= request.content %> 
+                    <td> <%= link_to "Approve", request_path(id: request.id , status: "approved") %>
+            </tr>
+
+            <br>
+        <% end %>
+        <table>
     </div>
+    <div class="medium-6 columns">
+        <table>
+            <h2>Approved requests</h2>
+            <p> <%= @approved.each do |approved| %>
+            <tr>
+                <td> <%= approved.id %></td>
+                <td> <%= approved.content %></td>
+                <td> <%= link_to "Reject", request_path(id: request.id , status: "rejected") %>
+        </tr>
+        <br>
+    <% end %>
+        </table>
+    </div>
+</div>

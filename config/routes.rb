@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   post 'login' => 'sessions#create'
   get 'rolify' => 'users#rolify'
+  get 'request' => 'requests#request'
   
   delete 'logout' => 'sessions#destroy'
   get 'dashboard'  => 'users#dashboard'

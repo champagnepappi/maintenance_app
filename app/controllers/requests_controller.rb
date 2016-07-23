@@ -22,6 +22,12 @@ class RequestsController < ApplicationController
     @comments = @request.comments
   end
 
+  def request
+    mrequest = Request.find(params[:id])
+    mrequest.update_attribute(:status, params[:status])
+
+  end
+
   def destroy
     @request.destroy
     flash[:success] = "Maintenance Request deleted"
