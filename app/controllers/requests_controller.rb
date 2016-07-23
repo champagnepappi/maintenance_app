@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user, only: :destroy
+  before_action :admin_user, only: [:index, :accept]
 
   def index
     @requests = Request.requested
@@ -22,9 +23,10 @@ class RequestsController < ApplicationController
     @comments = @request.comments
   end
 
-  def request
+  def accept
     mrequest = Request.find(params[:id])
     mrequest.update_attribute(:status, params[:status])
+    redirect_to requests_path
 
   end
 
@@ -44,4 +46,8 @@ class RequestsController < ApplicationController
     @request = current_user.requests.find_by(id: params[:id])
     redirect_to root_url if @request.nil?
   end
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
+  
 end
