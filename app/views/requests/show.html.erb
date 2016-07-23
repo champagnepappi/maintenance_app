@@ -5,3 +5,12 @@
     <%= f.text_area :content, placeholder: "Comment........" %>
     <%= f.submit %>
     <% end %>
+
+    <div>
+        <% if @comments.any? %>
+            <h3>comments ( <%= @comments.count %> )</h3>
+            <ol class="comments">
+                <%= render @comments %>
+                </ol>
+                <% end %>
+        </div>

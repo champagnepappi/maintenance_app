@@ -1,0 +1,23 @@
+<% provide(:title, "Requests")%>
+
+<div class="medium-12">
+    <div class="medium-6 columns">
+        <table>
+            <h2> Requests made</h2>
+            <p> <%= pluralize(@requests.count, "requests") %></p>
+            <tr>
+                <th>Id</th>
+                <th>Request</th>
+                </tr>
+                <% @requests.each do |request| %>
+                    <tr>
+                        <td> <%= request.id %></td>
+                        <td> <%= request.content %> 
+                        <td> <%= link_to "Approve" %>
+                        </tr>
+            
+                        <br>
+                        <% end %>
+                        <table>
+        </div>
+    </div>

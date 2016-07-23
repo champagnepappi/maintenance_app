@@ -2,6 +2,11 @@ class RequestsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user, only: :destroy
 
+  def index
+    @requests = Request.requested
+    @approved = Request.approved
+    @rejected = Request.rejected
+  end
   def create
     @request = current_user.requests.build(request_params)
     if @request.save
@@ -14,6 +19,7 @@ class RequestsController < ApplicationController
   end
   def show
     @request = Request.find(params[:id])
+    @comments = @request.comments
   end
 
   def destroy

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
-  resources :requests, only: [:create, :destroy]
+  resources :requests
 
   resources :comments, only: [:new, :create,:show, :destroy]
 

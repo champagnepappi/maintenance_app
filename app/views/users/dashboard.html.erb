@@ -1,27 +1,35 @@
 <div class="medium-12 columns" id="yahoo">
     <div class="callout success">
-    A role was assigned
+        A role was assigned
     </div>
 </div>
 <div class="medium-12">
-<div class="medium-6 columns">
-<h2>Users</h2>
-<p> <%= pluralize(@users.count, "user") %> </p>
-<% @users.each do |user| %>
-    <%= user.id %>
-    <%= user.name %>
-    <%= link_to "Promote to Maintainer", rolify_path(id: user.id, role: "maintainer"), remote: true %>
-    <br>
-<% end %>
-</div>
-<div class="medium-6 columns">
-<h2>Maintainers</h2>
-<p><%=pluralize(@maintainers.count, "maintainer") %></p>
-<% @maintainers.each do |maintainer| %>
-    <%= link_to maintainer.name, maintainer %> |
-    <%= link_to "demote to user",rolify_path(id: maintainer.id,role: "user"), remote: true %>
-    <br>
-    
-<% end %>
-</div>
+    <div class="medium-6 columns">
+        <table>
+        <h2>Users</h2>
+        <p> <%= pluralize(@users.count, "user") %> </p>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+            <% @users.each do |user| %>
+                <tr>
+                    <td> <%= user.id %></td>
+                    <td> <%= user.name %></td>
+                    <td> <%= link_to "Promote to Maintainer", rolify_path(id: user.id, role: "maintainer"), remote: true,class: "button" %></td>
+                </tr>
+                <br>
+            <% end %>
+        </table>
+    </div>
+    <div class="medium-6 columns">
+        <h2>Maintainers</h2>
+        <p><%=pluralize(@maintainers.count, "maintainer") %></p>
+        <% @maintainers.each do |maintainer| %>
+            <%= link_to maintainer.name, maintainer %> |
+            <%= link_to "demote to user",rolify_path(id: maintainer.id,role: "user"), remote: true %>
+            <br>
+
+        <% end %>
+    </div>
 </div>

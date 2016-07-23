@@ -1,7 +1,7 @@
 <li id="comment- <%= comment.id %>">
-    <span class"request"> <%= link_to comment.user.name, comment.user %></span>
-    <span class"content"> <%= comment.content %></span>
-    <span class="timestamp">
-        <%= time_ago_in_words(comment.created_at) %>ago
-    </span>
+
+    <span class="content"><%= comment.content %></span>
 </li>
+    <span class="timestamp">
+        commented <%= time_ago_in_words(comment.created_at) %> ago.
+        </span>

@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
   end
   def show
     @request = Request.find_by(id: params[:id])
-    @comments = @request.comments
   end
   
   def create

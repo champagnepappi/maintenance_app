@@ -63,6 +63,10 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
+    dotenv (2.1.1)
+    dotenv-rails (2.1.1)
+      dotenv (= 2.1.1)
+      railties (>= 4.0, < 5.1)
     erubis (2.7.0)
     excon (0.50.1)
     execjs (2.7.0)
@@ -305,6 +309,8 @@ GEM
       builder
       nokogiri (>= 1.4.1)
       trollop
+    recaptcha (3.3.0)
+      json
     sass (3.4.22)
     sass-rails (5.0.5)
       railties (>= 4.0.0, < 6)
@@ -359,6 +365,7 @@ DEPENDENCIES
   byebug
   carrierwave
   coffee-rails (~> 4.2)
+  dotenv-rails
   faker
   fog
   foundation-rails
@@ -375,6 +382,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.0)
   rails-controller-testing
+  recaptcha
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)

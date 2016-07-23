@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720123021) do
+ActiveRecord::Schema.define(version: 20160723060712) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -26,9 +26,10 @@ ActiveRecord::Schema.define(version: 20160720123021) do
   create_table "requests", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "picture"
+    t.integer  "status",     default: 0
     t.index ["user_id", "created_at"], name: "index_requests_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
