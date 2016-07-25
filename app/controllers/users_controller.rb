@@ -31,6 +31,9 @@ class UsersController < ApplicationController
     # @users = User.paginate(page: params[:page])
   end
 
+  def maintainer
+    @maintainers = User.maintainer
+  end
   def dashboard
     @maintainers = User.maintainer
     @admins = User.admin

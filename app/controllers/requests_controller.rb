@@ -28,6 +28,7 @@ class RequestsController < ApplicationController
    @user = User.find_by(id: mrequest.user_id)
    @user.send_approval_email
     mrequest.update_attribute(:status, params[:status])
+
     redirect_to requests_path
 
   end
