@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find
   end
 
   private
