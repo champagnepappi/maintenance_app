@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   
   delete 'logout' => 'sessions#destroy'
   get 'dashboard'  => 'users#dashboard'
+  get 'assign' => 'requests#assign'
 
   resources :users
 

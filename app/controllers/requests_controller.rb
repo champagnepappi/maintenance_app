@@ -30,7 +30,9 @@ class RequestsController < ApplicationController
     mrequest.update_attribute(:status, params[:status])
 
     redirect_to requests_path
-
+  end
+  def assign
+    @assigned = Request.assigned
   end
 
   def destroy

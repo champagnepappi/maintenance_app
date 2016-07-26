@@ -1,0 +1,19 @@
+<% provide(:title, "Assigned")%>
+<table>
+    <h2>Assigned Requests</h2>
+    <p> <%= pluralize(@assigned.count, "request") %></p>
+    <tr>
+        <th>Id</th>
+        <th>Request</th>
+        <th>Status</th>
+    </tr>
+    <% @assigned.each do |assigned| %>
+        <tr>
+            <td> <%= assigned.id %>
+            <td> <%= assigned.content %></td>
+            <td>ASSIGNED</td>
+        </tr>
+        <br>
+    <% end %>
+</table>
+
