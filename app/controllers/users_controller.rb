@@ -32,7 +32,8 @@ class UsersController < ApplicationController
   end
 
   def maintainer
-    @maintainers = User.maintainer
+    @maintainers = User.where(role: "maintainer")
+    @request = Request.find_by(id: params[:request_id])
   end
   def dashboard
     @maintainers = User.maintainer

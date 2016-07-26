@@ -49,6 +49,10 @@ class User < ApplicationRecord
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
   end
+  def send_approval_email
+    UserMailer.accept(self).deliver_now
+  end
+
 
   def create_reset_digest
     self.reset_token = User.new_token

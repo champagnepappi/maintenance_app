@@ -23,13 +23,20 @@
         </table>
     </div>
     <div class="medium-6 columns">
+        <table>
         <h2>Maintainers</h2>
         <p><%=pluralize(@maintainers.count, "maintainer") %></p>
+                <tr>
+                    <th>Name</th>
+                </tr>
         <% @maintainers.each do |maintainer| %>
-            <%= link_to maintainer.name, maintainer %> |
-            <%= link_to "demote to user",rolify_path(id: maintainer.id,role: "user"), remote: true %>
+            <tr>
+                <td> <%= link_to maintainer.name, maintainer %></td>
+                <td> <%= link_to "demote to user",rolify_path(id: maintainer.id,role: "user"), remote: true, class: "button" %></td>
+                </tr>
             <br>
 
         <% end %>
+        </table>
     </div>
 </div>

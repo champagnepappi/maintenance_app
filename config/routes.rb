@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   post 'login' => 'sessions#create'
   get 'rolify' => 'users#rolify'
-  get 'request' => 'requests#request'
+  get 'accept' => 'requests#accept'
+  get 'maintainer' => 'users#maintainer'
+  get 'assign' => 'requests#assign'
   
   delete 'logout' => 'sessions#destroy'
   get 'dashboard'  => 'users#dashboard'

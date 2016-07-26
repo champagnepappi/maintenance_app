@@ -24,9 +24,9 @@ class RequestsController < ApplicationController
   end
 
   def accept
-    mrequest = Request.find(params[:id])
-   @user = User.find_by(id: mrequest.user_id)
-   @user.send_approval_email
+   mrequest = Request.find(params[:id])
+   user = User.find_by(id: mrequest.user_id)
+   user.send_approval_email
     mrequest.update_attribute(:status, params[:status])
 
     redirect_to requests_path

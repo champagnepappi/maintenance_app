@@ -1,0 +1,15 @@
+<h2>Choose maintainer to assign request</h2><br>
+<%= @request.content %>
+<table>
+    <thead>
+        <th>Name<th>
+    </thead>
+    <tbody>
+        <% @maintainers.each do |maintainer| %>
+            <tr>
+                <td> <%= maintainer.name %></td>
+                <td> <%= link_to "assign request", accept_path(id: @request.id, status: "assigned"), class: "button"%> </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
