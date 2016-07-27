@@ -3,7 +3,7 @@
     <div class="medium-6 columns">
         <table>
             <h2>Assigned Requests</h2>
-            <p> <%= pluralize(@assigned.count, "request") %></p>
+             <%= pluralize(@assigned.count, "request") %>
             <tr>
                 <th>Id</th>
                 <th>Request</th>
@@ -14,7 +14,7 @@
                     <td> <%= assigned.id %>
                     <td> <%= assigned.content %></td>
                     <td>ASSIGNED</td>
-                    <td> <%= link_to "mark resolved",accept_path(id: assigned.id, status: "resolved"),class: "button" %></td>
+                    <td> <%= link_to "mark as resolved",accept_path(id: assigned.id, status: "resolved"),class: "button" %></td>
             </tr>
             <br>
         <% end %>
@@ -23,7 +23,7 @@
     <div class="medium-6 columns">
         <table>
             <h2>Resolved requests</h2>
-            <p> <%= pluralize(@resolved.count, "request") %></p>
+             <%= pluralize(@resolved.count, "request") %>
             <tr>
                 <th>Id</th>
                 <th>Request</th>

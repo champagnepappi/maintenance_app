@@ -14,12 +14,12 @@ class CommentsController < ApplicationController
       flash[:success] = "Comment added"
       redirect_to Request.find(@comment.request_id)
     else
-      render 'new'
+      flash[:danger] = ""
+      render 'show'
     end
   end
 
   def destroy
-    @comment = Comment.find
   end
 
   private

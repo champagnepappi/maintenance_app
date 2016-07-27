@@ -25,6 +25,7 @@ class RequestsController < ApplicationController
 
   def accept
    mrequest = Request.find(params[:id])
+   maintainer = User.find_by(id: params[:maintainer])
    user = User.find_by(id: mrequest.user_id)
    user.send_approval_email
     mrequest.update_attribute(:status, params[:status])
@@ -33,6 +34,8 @@ class RequestsController < ApplicationController
   end
   def assign
     @assigned = Request.assigned
+    @maintainer = User.maintainer
+    @resolved = Request.resolved
   end
 
   def destroy

@@ -45,12 +45,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     roles = params[:role]
     user.update_attribute(:role, roles)
-    respond_to do |format|
-      format.js {}
-      format.html {
-        redirect_to dashboard_path
-      }
-    end
+    redirect_to dashboard_path
   end
 
   def edit
@@ -67,16 +62,16 @@ class UsersController < ApplicationController
     end
   end
 
-    def destroy
-      User.find(params[:id]).destroy
-      flash[:success] = "User deleted"
-      redirect_to users_url
-    end
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to users_url
+  end
 
   private
   def user_params
     params.require(:user).permit(:name, :email,:contact, :password,
-                                :password_confirmation)
+                                 :password_confirmation)
   end
 
   #confirm a logged in user
@@ -96,5 +91,5 @@ class UsersController < ApplicationController
     redirect_to(root_url) unless current_user.admin?
   end
 
-  
+
 end
