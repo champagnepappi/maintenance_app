@@ -23,7 +23,7 @@ test "sign up with valid params" do
     # assert_redirected_to User.last
     # follow_redirect!
   end
-  assert_equal 1, Actionmailer::Base.deliveries.size
+  assert_equal 1, ActionMailer::Base.deliveries.size
   user = assigns(:user)
   assert_not user.activated?
   #login before activation

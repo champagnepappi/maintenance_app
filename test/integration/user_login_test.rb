@@ -21,10 +21,12 @@ class UserLoginTest < ActionDispatch::IntegrationTest
   test "login with valid information followed by logout" do
     get login_path
     assert_template 'sessions/new'
-    post login_path, params: {session: {
-      name: @user.name,
-      password: 'passw'
-    }}
+    post login_path, params: {
+      session: {
+        name: @user.name,
+        password: 'passw'
+      }
+    }
     assert is_logged_in?
     assert_redirected_to @user
     follow_redirect! #to actually visit the target page
