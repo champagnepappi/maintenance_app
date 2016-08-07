@@ -14,7 +14,7 @@ test "sign up with valid params" do
     post users_path params: {
       user: {
         name: "Kevin Santos",
-        email: "santos@gmail.com",
+        email: "ksantos@gmail.com",
         contact: "0713248792",
         password: "mypass",
         password_confirmation: "mypass"
