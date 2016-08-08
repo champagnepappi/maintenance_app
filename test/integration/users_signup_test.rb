@@ -13,11 +13,11 @@ test "sign up with valid params" do
   assert_difference 'User.count', 1 do
     post users_path params: {
       user: {
-        name: "Kevin Santos",
-        email: "ksantos@gmail.com",
+        name: "Thee Santos",
+        email: "ksaabntos@gmail.com",
         contact: "0713248792",
-        password: "mypass",
-        password_confirmation: "mypass"
+        password: "password",
+        password_confirmation: "password"
       }
     }
     # assert_redirected_to User.last

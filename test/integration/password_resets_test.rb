@@ -10,7 +10,15 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
   test "password resets" do
     get new_password_reset_path
     assert_template 'password_resets/new'
-    #for invalid email
+    #input invalid email
+    post password_resets_path,params: {
+      password_reset: {
+        email: ""
+      }
+    }
+    assert_not flash.empty?
+    assert_template 'password_resets/new'
+    #for valid email
     post password_resets_path,params: { password_reset: {
       email: @user.email
     }
@@ -38,28 +46,32 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     assert_select "input[name=email][type=hidden][value=?]",user.email
     #invalid password and confirmation
     patch password_reset_path(user.reset_token),
-     params: { email: user.email,
-      user: {password: "comeon", password_confirmation: "another" }
+      params: { email: user.email,
+                user: {password: "comeon", password_confirmation: "another" }
     }
-    #blank password
-    patch password_reset_path(user.reset_token),
-      email: user.email,
-      user: {
-         password: "",
-         password_confirmation: "password"
+      #blank password
+      patch password_reset_path(user.reset_token),
+        params: {
+        email: user.email,
+        user: {
+          password: "",
+          password_confirmation: "password"
+        } 
       }
-    assert_not flash.empty?
-    assert_template 'password_resets/edit'
-    #valid password and confirmation
-    patch password_reset_path(user.reset_token),
-      email: user.email,
-      user: {
-         password: "password",
-         password_confirmation: "password"
-      }
-      assert is_logged_in?
-      assert_not flash.empty?
-      assert_redirected_to user
+        assert_not flash.empty?
+        assert_template 'password_resets/edit'
+        #valid password and confirmation
+        patch password_reset_path(user.reset_token),
+          params: {
+          email: user.email,
+          user: {
+            password: "password",
+            password_confirmation: "password"
+          } 
+        }
+          assert is_logged_in?
+          assert_not flash.empty?
+          assert_redirected_to user
 
 
 

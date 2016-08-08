@@ -3,6 +3,7 @@ require 'test_helper'
 class RequestsControllerTest < ActionDispatch::IntegrationTest
   def setup
     @request = requests(:one)
+    @user = users(:santos)
   end
 
   test "should redirect create when not logged in" do
@@ -20,10 +21,10 @@ class RequestsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should redirect destroy for wrong request" do
-    log_in_as(users(:santos))
+    log_in_as(@user)
     request = requests(:wifi)
     assert_no_difference 'Request.count' do
-      delete request_path(@user), params: {id: request}
+      delete request_path(request), params: {id: request}
     end
     assert_redirected_to root_url
   end
