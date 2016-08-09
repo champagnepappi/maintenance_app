@@ -11,7 +11,7 @@
             <% @users.each do |user| %>
                 <tr>
                     <td> <%= user.id %></td>
-                    <td> <%= user.name %></td>
+                    <td> <%= link_to user.name, user %></td>
                     <td> <%= link_to "Promote to Maintainer", rolify_path(id: user.id, role: "maintainer"),class: "button" %></td>
                 </tr>
                 <br>

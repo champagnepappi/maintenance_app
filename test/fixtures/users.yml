@@ -12,6 +12,7 @@ austin:
     email: austin@gmail.com
     contact: 0836136811
     password_digest: <%= User.digest('password')%>
+    role: 0
     activated: true
     activated_at: <%= Time.zone.now %>
 
