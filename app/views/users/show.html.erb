@@ -1,8 +1,14 @@
 <% provide(:title, @user.name)%>
-<%= @user.email %>
-<% if @user.requests.any? %>
-    <h3>Requests ( <%= @user.requests.count %> )</h3>
-    <ol class="requests">
-        <%= render @requests %>
-    </ol>
-<% end %>
+<div class="medium-12">
+    <div class="medium-4 columns">
+        <%= @user.email %>
+    </div>
+    <div class="medium-8 columns">
+        <% if @user.requests.any? %>
+            <h3>Requests ( <%= @user.requests.count %> )</h3>
+            <ol class="requests">
+                <%= render @requests %>
+            </ol>
+        <% end %>
+    </div>
+</div>
