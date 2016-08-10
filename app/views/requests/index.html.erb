@@ -14,7 +14,7 @@
             <% @requests.each do |request| %>
                 <tr>
                     <td> <%= request.id %></td>
-                    <td> <%= request.content %> </td>
+                    <td> <%= link_to request.content, request %> </td>
                     <td> <%= link_to "Approve", accept_path(id: request.id , status: "approved"),class: "button" %></td>
                 <td> <%= link_to "Reject", accept_path(id: request.id , status: "rejected"),class: "button" %></td>
             </tr>

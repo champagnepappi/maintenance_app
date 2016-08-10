@@ -1,16 +1,22 @@
 <% provide(:title, "Home") %>
+<div class="medium-12 columns">
+    <% if logged_in? %>
+        <div class="medium-4 columns">
+            <%= render 'shared/profile' %>
+            <%= render 'shared/request_form' %>
+        </div>
+        <div class="medium-8 columns">
+            <h3>Requests Made</h3>
+            <%= render 'shared/feed' %>
+        </div>
+    <% else %>
+        <div class="content">
+        <h1>Welcome to the maintenance App</h1>
+        <p>You are just in the right place</p>
+        <p><%= link_to "Sign Up here", new_user_path %><br<br></p>
+        </div>
+    <% end %>
 
- <% if logged_in? %>
-     <%= render 'shared/profile' %>
-     <%= render 'shared/request_form' %>
-     <h3>Requests Made</h3>
-     <%= render 'shared/feed' %>
- <% else %>
-<h1>Welcome to the maintenance App</h1>
-<p>You are just in the right place</p>
-<%= link_to "Sign Up here", new_user_path %><br<br>
- <% end %>
-
-
+</div>
 
 
