@@ -19,7 +19,6 @@
                 <td> <%= link_to "Reject", accept_path(id: request.id , status: "rejected"),class: "button" %></td>
             </tr>
 
-            <br>
         <% end %>
         </table>
     </div>
@@ -34,11 +33,10 @@
             <p> <% @approved.each do |approved| %>
             <tr>
                 <td> <%= approved.id %></td>
-                <td> <%= approved.content %></td>
+                <td> <%= link_to approved.content, approved %></td>
                 <td> <%= link_to "Reject", accept_path(id: approved.id , status: "rejected"),class: "button" %></td>
                 <td> <%= link_to "assign to maintainer",maintainer_path(request_id: approved.id) ,class: "button" %></td>
             </tr>
-            <br>
         <% end %>
         </table>
     </div>
