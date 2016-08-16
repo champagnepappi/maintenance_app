@@ -14,7 +14,6 @@
                     <td> <%= link_to user.name, user %></td>
                     <td> <%= link_to "Promote to Maintainer", rolify_path(id: user.id, role: "maintainer"),class: "button" %></td>
                 </tr>
-                <br>
             <% end %>
         </table>
     </div>
@@ -30,7 +29,6 @@
                     <td> <%= link_to maintainer.name, maintainer %></td>
                     <td> <%= link_to "demote to user",rolify_path(id: maintainer.id,role: "user"), class: "button" %></td>
                 </tr>
-                <br>
 
             <% end %>
         </table>
