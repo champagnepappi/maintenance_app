@@ -14,5 +14,10 @@ class UserMailerPreview < ActionMailer::Preview
     user.reset_token = User.new_token
     UserMailer.password_reset(user)
   end
+  
+  def new_comment
+    comment = Comment.last
+    UserMailer.new_comment(comment)
+  end
 
 end

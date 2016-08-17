@@ -29,3 +29,5 @@ users = User.order(:created_at).take(5)
   content = Faker::Lorem.sentence(5)
   users.each {|user| user.requests.create!(content: content)}
 end
+
+
