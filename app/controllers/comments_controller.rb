@@ -13,6 +13,8 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:success] = "Comment added"
       redirect_to Request.find(@comment.request_id)
+       @user = User.find(@comment.request_id)
+       @user.send_comment_email
     else
       flash[:danger] = ""
       render 'show'
