@@ -24,4 +24,9 @@ class UserMailer < ApplicationMailer
     mail to: user.email, subject: "Requests approval"
 
   end
+  def new_comment(user)
+    @user = user
+    mail to: user.email, subject: "New comment "
+
+  end
 end
