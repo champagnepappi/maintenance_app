@@ -6,6 +6,7 @@ gem 'will_paginate'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
+gem 'font-awesome-rails'
 gem 'dotenv-rails', :require => 'dotenv/rails-now'
 
 gem "recaptcha", require: "recaptcha/rails"
