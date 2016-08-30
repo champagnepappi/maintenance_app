@@ -1,3 +1,11 @@
-<li id="comment-<%= comment.id %>">
-    <span class="content"><%= comment.content %></span>
+<li id="comment- <%= comment.id %>">
+<span class="content">
+    <%= comment.content %><br>
+</span>
+<span class="timestamp">
+    Posted <%= time_ago_in_words(comment.created_at) unless comment.created_at.blank? %> ago.
+    <% if current_user?(comment.user)%>
+        <%= link_to "delete", comment, method: :delete, data: {confirm: "Sure you wanna delete this comment??"} %>
+        <% end %>
+</span>
 </li>
