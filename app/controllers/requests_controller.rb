@@ -19,7 +19,7 @@ class RequestsController < ApplicationController
     end
   end
   def show
-    @request = Request.find(params[:id])
+    @request = Request.find_by(id: params[:id])
     @comments = @request.comments
   end
 
