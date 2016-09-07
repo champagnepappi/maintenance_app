@@ -24,4 +24,12 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_url
   end
+
+  private
+  def is_logged_in
+    if current_user
+      redirect_to root_url 
+      flash[:message] = "You are already logged in"
+    end
+  end
 end
