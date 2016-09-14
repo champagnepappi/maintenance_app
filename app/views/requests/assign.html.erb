@@ -12,11 +12,10 @@
             <% @assigned.each do |assigned| %>
                 <tr>
                     <td> <%= assigned.id %>
-                    <td> <%= assigned.content %></td>
+                    <td> <%= link_to assigned.content , assigned %></td>
                     <td>ASSIGNED</td>
                     <td> <%= link_to "mark as resolved",accept_path(id: assigned.id, status: "resolved"),class: "button" %></td>
             </tr>
-            <br>
         <% end %>
         </table>
     </div>
@@ -32,10 +31,9 @@
             <% @resolved.each do |resolved| %>
                 <tr> 
                     <td> <%= resolved.id %></td>
-                    <td> <%= resolved.content %></td>
+                    <td> <%= link_to resolved.content, resolved %></td>
                     <td> resolved </td>
                 </tr>
-                <br>
             <% end %>
         </table>
     </div>
